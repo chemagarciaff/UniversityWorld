@@ -1,0 +1,22 @@
+    .custom-grid {
+      grid-template-areas: 
+        "header"
+        "aside"
+        "main"
+        "footer";
+    }
+  
+    .header {
+      grid-area: header;
+    }
+    .aside {
+      grid-area: aside;
+    }
+    .main {
+      grid-area: main;
+    }
+    .footer {
+      grid-area: footer;
+    }
+
+  
