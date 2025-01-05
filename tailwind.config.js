@@ -2,24 +2,8 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {
-      gridTemplateAreas: {
-        'md-layout': [
-          'header header',
-          'sidebar content',
-          'footer footer'
-        ]
-      },
-    },
+    extend: {},
   },
-  plugins: [
-    function ({ addUtilities }) {
-      addUtilities({
-        '.grid-template-md-layout': {
-          'grid-template-areas': "'header header' 'sidebar content' 'footer footer'",
-        }
-      })
-    }
-  ],
+  plugins: [],
 }
 
