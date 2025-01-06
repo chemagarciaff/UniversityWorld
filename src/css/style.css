@@ -1,5 +1,5 @@
 :root{
-  --principal: '#CEA152';
+  --principal: #CEA152;
 }
 
 @font-face{
@@ -28,3 +28,16 @@
       transform: rotateY(720deg);
     }
   }
+
+.title{
+  color:var(--principal);
+  font-size: 30px;
+}
+
+.contenedor{
+  max-width: 1000px;
+}
+
+.laureate{
+  border: 1px solid black;
+}

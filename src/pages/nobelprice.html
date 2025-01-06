@@ -9,13 +9,13 @@
 </head>
 <body>
     <div
-    class="container border border-gray-300 w-full mx-auto grid grid-rows-[70px_auto_1fr_100px] grid-cols-1 gap-4 p-4 md:grid-cols-[200px_1fr] md:grid-rows-[100px_1fr_100px]">
+    class="contenedor border border-gray-300 w-auto mx-auto grid grid-rows-[70px_auto_1fr_100px] grid-cols-1 gap-4 p-4 md:grid-cols-[200px_1fr] md:grid-rows-[100px_1fr_100px]">
     <header class="md:col-span-2 flex justify-center items-center">
         <img src="./../assets/images/nobel-price-coin.png" alt="" class="w-[100px] inline-block" id="logo-coin">
         <img src="./../assets/images/nobel-price-logo.png" alt="" class="w-[70px] inline-block" id="logo-text">
     </header>
 
-    <aside class="">
+    <aside class="mt-24">
 
         <div id="dropdown" class="w-full h-[70px] text-center border border-gray-300 rounded md:hidden flex items-center justify-center">
             Filtros
@@ -39,12 +39,11 @@
                 <select id="nobelPrizeCategory" name="nobelPrizeCategory"
                     class="w-full p-2 border border-gray-300 rounded">
                     <option value="" selected disabled>Seleccionar...</option>
-                    <option value="che">Química</option>
-                    <option value="eco">Economía</option>
-                    <option value="lit">Literatura</option>
-                    <option value="pea">Paz</option>
-                    <option value="phy">Física</option>
-                    <option value="med">Medicina</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Literature">Literature</option>
+                    <option value="Peace">Peace</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Physiology or Medicine">Medicine</option>
                 </select>
                 <p class="text-gray-500 text-sm">Categoría del Premio Nobel.</p>
             </div>
@@ -52,8 +51,8 @@
     </aside>
 
     <main class="w-auto  p-8" id="main">
-        <h1 class="text-xl">LAUREATES</h1>
-        <div class="cards w-full flex flex-wrap justify-center p-4 gap-3" id="cards">
+        <h1 class="title" id="title"></h1>
+        <div class="cards w-full flex flex-col p-4 gap-3" id="cards">
             <!-- Aqui iran las tarjetas -->
 
         </div>
@@ -61,7 +60,7 @@
 
     </main>
 
-    <footer class="border border-[yellow] md:col-span-2">
+    <footer class="border border-[red] md:col-span-2">
 
     </footer>
 

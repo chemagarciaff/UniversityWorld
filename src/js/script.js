@@ -72,15 +72,15 @@ const createCard = (nobel) => {
     let card = document.createElement('DIV');
     card.className = 'card';
     card.classList.add('w-[280px]', 'py-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-center', 'border', 'border-gray-300');
+    
     let title = document.createElement('H3');
     title.textContent = nobel.awardYear;
+    
     let category = document.createElement('H2');
     category.textContent = nobel.category.en;
     category.style.fontSize = '30px';
     category.style.textAlign = 'center';
-    // nobel.laureates.forEach(laureate => {
-
-    // })
+   
     card.append(category, title);
     return card;
 }
