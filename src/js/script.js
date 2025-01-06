@@ -6,14 +6,10 @@ let coin =document.getElementById('logo-coin');
 let main = document.getElementById('main');
 let cards = document.getElementById('cards');
 
-
-
 // Methods
 const rotateCoin = () => {
     coin.classList.add('rotateCoin');
 }
-
-
 
 let formShown = false;
 const showForm = () => {
@@ -29,10 +25,6 @@ const showForm = () => {
     formShown = !formShown;
 }
 
-
-
-
-
 // Events
 dropdown.addEventListener('click', showForm);
 coin.addEventListener('mouseover', rotateCoin);
@@ -47,7 +39,7 @@ coin.addEventListener('animationend', () => {
 
 // Peticiones a api de Premios nobel
 
-const getNobelPrices = async () => {
+const getNobelPrizes = async () => {
     const results = await fetch("https://api.nobelprize.org/2.1/nobelPrizes?limit=676");
     
     let data = await results.json();
@@ -58,12 +50,12 @@ const getNobelPrices = async () => {
 
 let nobelPrizes;
 
-const loadNobelPrices = async () => {
-    nobelPrizes = await getNobelPrices();
+const loadNobelPrizes = async () => {
+    nobelPrizes = await getNobelPrizes();
     
-    !sessionStorage.getItem('nobelPrizes') 
-        ? await sessionStorage.setItem('nobelPrizes', JSON.stringify(nobelPrizes)) 
-        : console.log("Los premios Nobel ya están almacenados en sessionStorage.");
+    !localStorage.getItem('nobelPrizes') 
+        ? await localStorage.setItem('nobelPrizes', JSON.stringify(nobelPrizes)) 
+        : console.log("Los premios Nobel ya están almacenados en localStorage.");
         
     let fragment = document.createDocumentFragment();
 
@@ -84,7 +76,7 @@ const createCard = (nobel) => {
     title.textContent = nobel.awardYear;
     let category = document.createElement('H2');
     category.textContent = nobel.category.en;
-    category.style.fontSize = '28px';
+    category.style.fontSize = '30px';
     category.style.textAlign = 'center';
     // nobel.laureates.forEach(laureate => {
 
@@ -103,6 +95,6 @@ const changePage = (event) => {
 }
 
 
-document.addEventListener('DOMContentLoaded', loadNobelPrices)
+document.addEventListener('DOMContentLoaded', loadNobelPrizes)
 cards.addEventListener('click', changePage)
 

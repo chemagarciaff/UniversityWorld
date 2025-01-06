@@ -4,9 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Nobel Price</title>
+    <link rel="stylesheet" href="./../css/style.css">
+    <link href="./../output.css" rel="stylesheet">
 </head>
 <body>
-    
+    <div
+    class="container border border-gray-300 w-full mx-auto grid grid-rows-[70px_auto_1fr_100px] grid-cols-1 gap-4 p-4 md:grid-cols-[200px_1fr] md:grid-rows-[100px_1fr_100px]">
+    <header class="md:col-span-2 flex justify-center items-center">
+        <img src="./../assets/images/nobel-price-coin.png" alt="" class="w-[100px] inline-block" id="logo-coin">
+        <img src="./../assets/images/nobel-price-logo.png" alt="" class="w-[70px] inline-block" id="logo-text">
+    </header>
+
+    <aside class="">
+
+        <div id="dropdown" class="w-full h-[70px] text-center border border-gray-300 rounded md:hidden flex items-center justify-center">
+            Filtros
+        </div>
+
+        <form action="" method="get" class="hidden md:block border border-gray-200 p-2" id="form">
+           
+
+            <!-- Input para nobelPrizeYear -->
+            <div class="mb-4">
+                <label for="nobelPrizeYear" class="block text-gray-700">Año del Premio Nobel</label>
+                <input id="nobelPrizeYear" name="nobelPrizeYear" type="number" min="1901"
+                    class="w-full p-2 border border-gray-300 rounded" required>
+                <p class="text-gray-500 text-sm">Año en que se otorgó el Premio Nobel (formato YYYY). El año debe
+                    ser posterior a 1901.</p>
+            </div>
+
+            <!-- Input para nobelPrizeCategory -->
+            <div class="mb-4">
+                <label for="nobelPrizeCategory" class="block text-gray-700">Categoría del Premio Nobel</label>
+                <select id="nobelPrizeCategory" name="nobelPrizeCategory"
+                    class="w-full p-2 border border-gray-300 rounded">
+                    <option value="" selected disabled>Seleccionar...</option>
+                    <option value="che">Química</option>
+                    <option value="eco">Economía</option>
+                    <option value="lit">Literatura</option>
+                    <option value="pea">Paz</option>
+                    <option value="phy">Física</option>
+                    <option value="med">Medicina</option>
+                </select>
+                <p class="text-gray-500 text-sm">Categoría del Premio Nobel.</p>
+            </div>
+        </form>
+    </aside>
+
+    <main class="w-auto  p-8" id="main">
+        <h1 class="text-xl">LAUREATES</h1>
+        <div class="cards w-full flex flex-wrap justify-center p-4 gap-3" id="cards">
+            <!-- Aqui iran las tarjetas -->
+
+        </div>
+
+
+    </main>
+
+    <footer class="border border-[yellow] md:col-span-2">
+
+    </footer>
+
+
+
+</div>
 
 
     <script src="./../js/nobelprice.js" type="module"></script>

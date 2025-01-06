@@ -1,3 +1,20 @@
+:root{
+  --principal: '#CEA152';
+}
+
+@font-face{
+  font-family: 'noah';
+  src: url("./../assets/typo/noah-regular.otf")
+}
+@font-face{
+  font-family: 'noah-bold';
+  src: url("./../assets/typo/noah-bold.otf")
+}
+
+*{
+  font-family: 'noah';
+}
+
 
 .rotateCoin{
   animation: rotate 3s ;
