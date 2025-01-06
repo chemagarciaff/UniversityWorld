@@ -4,6 +4,7 @@ let form = document.getElementById('form');
 let coin =document.getElementById('logo-coin');
 let main = document.getElementById('main');
 let cards = document.getElementById('cards');
+let news = document.getElementById('news');
 
 
 // Methods
@@ -38,14 +39,38 @@ coin.addEventListener('animationend', () => {
 
 
 
-// const getArticles = async () => {
-//     const results = await fetch("https://api.core.ac.uk/v3/search/works?api_key=ItmjpOsLC8bYwvlTdgR35x7c9yAh12Fk&q=chemistry%20nobel%201901");
+const getArticles = async () => {
+    const results = await fetch("https://api.core.ac.uk/v3/search/works?api_key=ItmjpOsLC8bYwvlTdgR35x7c9yAh12Fk&q=nobel%20" + year + "%20" + category + "%20");
 
-//     let data = await results.json();
+    let data = await results.json();
 
-//     console.log(data);
-// }
-// getArticles();
+    let fragment = document.createDocumentFragment();
+
+    data.results.forEach(article => 
+        fragment.append(createArticle(article))
+    )
+
+    news.append(fragment);
+
+    console.log(data.results);
+}
+
+const createArticle = (article) => {
+    let articleContainer = document.createElement('ARTICLE');
+    articleContainer.classList.add('w-full', 'p-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-start', 'border', 'border-[#CEA152]');
+    
+    let articleTitle = document.createElement('H2');
+    articleTitle.textContent = article.title;
+    articleTitle.style.fontSize = '19px';
+    
+    let publisher = document.createElement('H3');
+    publisher.textContent = article.publisher + " - " + article.yearPublished;
+    publisher.style.fontSize = '13px';
+
+    articleContainer.append(articleTitle, publisher);
+
+    return articleContainer
+}
 
 let nobelPrizes;
 let chosenPrize;
@@ -89,7 +114,7 @@ const readLaureates = () => {
 
 const createCards = (laureate) => {
     let card = document.createElement('ARTICLE');
-    card.classList.add('w-full', 'p-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-start', 'border', 'border-gray-300');
+    card.classList.add('w-full', 'p-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-start', 'border', 'border-[#CEA152]');
     
     let fullName = document.createElement('H2');
     fullName.textContent = laureate.knownName.en;
@@ -109,6 +134,7 @@ const firstLoad = () => {
     getNobelPrize();
     setInfo();
     readLaureates();
+    getArticles();
 }
 
 

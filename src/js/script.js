@@ -71,7 +71,7 @@ const loadNobelPrizes = async () => {
 const createCard = (nobel) => {
     let card = document.createElement('DIV');
     card.className = 'card';
-    card.classList.add('w-[280px]', 'py-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-center', 'border', 'border-gray-300');
+    card.classList.add('w-[280px]', 'py-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-center', 'border', 'border-[#CEA152]');
     
     let title = document.createElement('H3');
     title.textContent = nobel.awardYear;
