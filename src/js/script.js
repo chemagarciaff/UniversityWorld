@@ -11,7 +11,6 @@ let cards = document.getElementById('cards');
 // Methods
 const rotateCoin = () => {
     coin.classList.add('rotateCoin');
-    console.log('hola');
 }
 
 
@@ -44,43 +43,34 @@ coin.addEventListener('animationend', () => {
 
 
 
-// Peticiones a api de youutube (abajo)
-
-// const myHeaders = new Headers();
-// myHeaders.append("Accept", "application/json");
-
-// const requestOptions = {
-//   method: "GET",
-//   headers: myHeaders,
-//   redirect: "follow"
-// };
-
-// fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=chemistry%7Cadolf%7Cvon%7Cbaeyer&key=AIzaSyC3nx67gWQUBQz-iNj2jsn3Xa9sDZM6aA0", requestOptions)
-//   .then((response) => response.text())
-//   .then((result) => console.log(result))
-//   .catch((error) => console.error(error));
-
-
 
 
 // Peticiones a api de Premios nobel
 
 const getNobelPrices = async () => {
     const results = await fetch("https://api.nobelprize.org/2.1/nobelPrizes?limit=676");
-
+    
     let data = await results.json();
-
+    
     return data.nobelPrizes;
 }
 
-const loadNobelPrices = async () => {
-    let nobelPrizes = await getNobelPrices();
 
+let nobelPrizes;
+
+const loadNobelPrices = async () => {
+    nobelPrizes = await getNobelPrices();
+    
+    !sessionStorage.getItem('nobelPrizes') 
+        ? await sessionStorage.setItem('nobelPrizes', JSON.stringify(nobelPrizes)) 
+        : console.log("Los premios Nobel ya están almacenados en sessionStorage.");
+        
     let fragment = document.createDocumentFragment();
 
     nobelPrizes.forEach(nobel => {
-        fragment.appendChild(createCard(nobel));
-        // createCard(nobel);
+
+            fragment.appendChild(createCard(nobel));
+
     });
 
     cards.append(fragment);
@@ -88,6 +78,7 @@ const loadNobelPrices = async () => {
 
 const createCard = (nobel) => {
     let card = document.createElement('DIV');
+    card.className = 'card';
     card.classList.add('w-[280px]', 'py-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-center', 'border', 'border-gray-300');
     let title = document.createElement('H3');
     title.textContent = nobel.awardYear;
@@ -102,4 +93,16 @@ const createCard = (nobel) => {
     return card;
 }
 
+
+const changePage = (event) => {
+    if(event.target.classList.contains('card')){
+        let category = event.target.children[0].textContent;
+        let year = event.target.children[1].textContent
+        window.location.href = "./pages/nobelprice.html?year=" + year + "&category=" + category;
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', loadNobelPrices)
+cards.addEventListener('click', changePage)
+
