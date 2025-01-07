@@ -47,7 +47,7 @@
                 <div class="mb-4">
                     <label for="nobelPrizeYear" class="block text-black">Año del Premio Nobel</label>
                     <input id="nobelPrizeYear" name="nobelPrizeYear" type="number" min="1901"
-                        class="w-full p-2 border border-gray-300 rounded" required>
+                        class="w-full p-2 border border-gray-300 rounded" >
                     <p class="text-gray-500 text-xs">Año en que se otorgó el Premio Nobel (formato YYYY). El año debe
                         ser posterior a 1901.</p>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="mb-4">
                     <label for="yearTo" class="block text-black">Hasta el año</label>
                     <input id="yearTo" name="yearTo" type="number" min="1901"
-                        class="w-full p-2 border border-gray-300 rounded" required>
+                        class="w-full p-2 border border-gray-300 rounded" >
                     <p class="text-gray-500 text-xs">Se utiliza junto con el año del Premio Nobel para especificar un
                         rango de años. El año debe ser posterior a 1901.</p>
                 </div>
@@ -66,16 +66,20 @@
                     <label for="nobelPrizeCategory" class="block text-black">Categoría del Premio Nobel</label>
                     <select id="nobelPrizeCategory" name="nobelPrizeCategory"
                         class="w-full p-2 border border-gray-300 rounded">
-                        <option value="" selected disabled>Seleccionar...</option>
-                        <option value="che">Química</option>
-                        <option value="eco">Economía</option>
-                        <option value="lit">Literatura</option>
-                        <option value="pea">Paz</option>
-                        <option value="phy">Física</option>
-                        <option value="med">Medicina</option>
+                        <option value="" selected >All</option>
+                        <option value="Chemistry">Química</option>
+                        <option value="Economic Sciences">Economía</option>
+                        <option value="Literature">Literatura</option>
+                        <option value="Peace">Paz</option>
+                        <option value="Physics">Física</option>
+                        <option value="Physiology or Medicine">Medicina</option>
                     </select>
                     <p class="text-gray-500 text-xs">Categoría del Premio Nobel.</p>
                 </div>
+
+                <button class="bg-green-500 text-white py-2 px-4 rounded-lg text-lg font-medium text-center hover:bg-green-600 active:scale-95 transition-all" id="changes-btn">Apply Changes</button>
+
+
             </form>
         </aside>
 
