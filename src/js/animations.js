@@ -68,6 +68,10 @@ const firstAnimation = () => {
 
     }else{
         firstScreen.classList.add('hidden');
+        body.classList.remove('overflow-hidden');
+        body.classList.add('overflow-x-hidden');
+
+
     }
 
 }
