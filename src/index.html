@@ -6,11 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Nobel Prize</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/animations.css">
     <link href="./output.css" rel="stylesheet">
     <link rel="shortcut icon" href="./assets/images/nobel-price-coin.png" type="image/x-icon">
 </head>
 
-<body>
+<body class="overflow-hidden" id="body">
+
+    <div class="firstAnimation absolute top-0 left-0 w-full h-[100vh] bg-white flex justify-center items-center" id="firstScreen">
+        <img src="./assets/images/nobel-price-logo.png" alt="" class="w-[400px] logo-text absolute top-[48%] left-[50%] hidden" id="animationFirstText">
+        <img src="./assets/images/nobel-price-coin.png" alt="" class="w-[450px] logo-coin rotateInitialCoin relative" id="animationFirstCoin">
+    </div>
+
     <div
         class="container w-full mx-auto grid grid-rows-[70px_auto_1fr_100px] grid-cols-1 gap-3 p-4 md:grid-cols-[200px_1fr] md:grid-rows-[100px_1fr_100px]">
         <header class="md:col-span-2 flex justify-center items-center gap-3">
@@ -88,7 +95,7 @@
 
 
     </div>
-
+    <script src="./js/animations.js"></script>
     <script src="./js/script.js" type="module"></script>
 </body>
 

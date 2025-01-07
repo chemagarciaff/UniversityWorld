@@ -21,14 +21,16 @@
   animation: rotate 3s ;
 }
 
-  @keyframes rotate {
-    0%{
-      transform: rotateY(0deg);
-    }
-    100%{
-      transform: rotateY(720deg);
-    }
+
+@keyframes rotate {
+  0%{
+    transform: rotateY(0deg);
   }
+  100%{
+    transform: rotateY(720deg);
+  }
+}
+
 
 .title{
   color:var(--principal);
@@ -48,4 +50,8 @@
 }
 .card{
   transition: 0.2s;
+}
+
+.logo-text{
+  transform: translate(-50%, -50%);
 }

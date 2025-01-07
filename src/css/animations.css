@@ -1,0 +1,75 @@
+.rotateInitialCoin{
+    animation: rotateInitialCoin 3s ;
+  }
+  
+    @keyframes rotateInitialCoin {
+      0%{
+        transform: rotate(0deg);
+        left: -950px;
+    }
+    100%{
+        transform: rotate(360deg);
+        left: 0px;
+      }
+    }
+
+
+.translateCoin {
+ animation: translateCoin 2s forwards;
+}
+
+@keyframes translateCoin {
+    0% {
+        /* transform: translateX(0); */
+        left: 0;
+    }
+    100% {
+        /* transform: translateX(-210px); */
+        left: -210px;
+    }
+}
+
+
+.translateText {
+    animation: translateText 2s forwards;
+}
+
+@keyframes translateText {
+    0% {
+        transform: translateX(0) translate(-50%, -50%);
+    }
+    100% {
+        transform: translateX(240px) translate(-50%, -50%);
+    }
+}
+
+
+.hideCoin {
+    animation: hideCoin 6s forwards;
+}
+
+@keyframes hideCoin{
+    0%{
+        transform: rotate(0);
+        left: -210px;
+    }
+    100%{
+        transform: rotate(720deg);
+        left: 1200px;
+    }
+}
+
+.hideScreen {
+    animation: hideScreen 1.2s forwards;
+}
+
+@keyframes hideScreen {
+    0% {
+        opacity: 1;
+        z-index: 5;
+    }
+    100% {
+        opacity: 0;
+        z-index: -5;
+    }
+}
