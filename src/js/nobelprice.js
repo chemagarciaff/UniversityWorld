@@ -36,11 +36,17 @@ coin.addEventListener('animationend', () => {
 
 
 
-
+const formatName = (name) => {
+    console.log(name);
+    let newName = name.replace(/\./g, "").replace(/ /g, "%20");
+    console.log(newName);
+    return name.replace(/\./g, "").replace(/ /g, "%20");
+}
 
 
 const getArticles = async () => {
-    const results = await fetch("https://api.core.ac.uk/v3/search/works?api_key=ItmjpOsLC8bYwvlTdgR35x7c9yAh12Fk&q=nobel%20" + year + "%20" + category + "%20");
+    console.log("https://api.core.ac.uk/v3/search/works?api_key=ItmjpOsLC8bYwvlTdgR35x7c9yAh12Fk&limit=10&q=nobel%20" + formatName(firstLaureate) + "%20" + category + "%20" + year);
+    const results = await fetch("https://api.core.ac.uk/v3/search/works?api_key=ItmjpOsLC8bYwvlTdgR35x7c9yAh12Fk&limit=10&q=nobel%20limit=10%20" + formatName(firstLaureate) + "%20" + category + "%20" + year);
 
     let data = await results.json();
 
@@ -62,12 +68,23 @@ const createArticle = (article) => {
     let articleTitle = document.createElement('H2');
     articleTitle.textContent = article.title;
     articleTitle.style.fontSize = '19px';
+
+    let publisherText = (article.publisher == "") ? "Unknown" : article.publisher;
+    let yearText = (!article.yearPublished) ? "Unknown" : article.yearPublished;
     
     let publisher = document.createElement('H3');
-    publisher.textContent = article.publisher + " - " + article.yearPublished;
+    publisher.textContent = publisherText + " - " + yearText;
     publisher.style.fontSize = '13px';
 
-    articleContainer.append(articleTitle, publisher);
+    let link = document.createElement('A');
+    link.textContent = 'See Article';
+    link.style.paddingTop = '15px';
+    link.target = 'False';
+    link.style.color = '#d39f44'
+    link.href = article.downloadUrl;
+
+
+    articleContainer.append(articleTitle, publisher, link);
 
     return articleContainer
 }
@@ -84,6 +101,7 @@ const getNobelPrize = () => {
 
 let year;
 let category;
+let firstLaureate;
 
 const getParams = () => {
     let urlParams = new URLSearchParams(window.location.search);
@@ -105,10 +123,21 @@ const setInfo = () => {
 
 const readLaureates = () => {
     let fragment = document.createDocumentFragment();
-    chosenPrize[0].laureates.forEach(laureate => {
-        console.log(laureate);
-        fragment.append(createCards(laureate));
-    });
+
+    if(chosenPrize[0].laureates){
+        chosenPrize[0].laureates.forEach((laureate, index) => {
+            if(laureate.knownName) if(index == 0) firstLaureate = laureate.knownName.en;
+            if(laureate.orgName) if(index == 0) firstLaureate = laureate.orgName.en;
+
+            fragment.append(createCards(laureate));
+        });
+    }else {
+        let alert = document.createElement('P');
+        alert.textContent = 'No laureates for this prize';
+
+        fragment.append(alert);
+    }
+
     cards.append(fragment);
 }
 
@@ -117,8 +146,11 @@ const createCards = (laureate) => {
     card.classList.add('w-full', 'p-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-start', 'border', 'border-[#CEA152]');
     
     let fullName = document.createElement('H2');
-    fullName.textContent = laureate.knownName.en;
-    fullName.style.fontSize = '19px';
+    laureate.knownName 
+    ? fullName.textContent = "Winner: " + laureate.knownName.en
+    : fullName.textContent = "Winner: " + laureate.orgName.en;
+    
+    fullName.style.fontSize = '22px';
     
     let motivation = document.createElement('H3');
     motivation.textContent = laureate.motivation.en.charAt(0).toUpperCase() + laureate.motivation.en.slice(1);;

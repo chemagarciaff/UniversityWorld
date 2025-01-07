@@ -40,7 +40,7 @@ coin.addEventListener('animationend', () => {
 // Peticiones a api de Premios nobel
 
 const getNobelPrizes = async () => {
-    const results = await fetch("https://api.nobelprize.org/2.1/nobelPrizes?limit=676");
+    const results = await fetch("https://api.nobelprize.org/2.1/nobelPrizes?limit=676&sort=desc");
     
     let data = await results.json();
     
