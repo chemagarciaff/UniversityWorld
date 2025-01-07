@@ -1,6 +1,9 @@
 
 let cards = document.getElementById('cards');
 let news = document.getElementById('news');
+let nobelPrizeCategory = document.getElementById('nobelPrizeCategory');
+let nobelPrizeYear = document.getElementById('nobelPrizeYear');
+
 
 let boton = document.getElementById('boton');
 boton.addEventListener('click', function(){ 
@@ -117,7 +120,7 @@ const readLaureates = () => {
 
 const createCards = (laureate) => {
     let card = document.createElement('ARTICLE');
-    card.classList.add('w-full', 'p-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-start', 'border', 'border-[#CEA152]');
+    card.classList.add('card', 'w-full', 'p-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-start', 'border', 'border-[#CEA152]');
     
     let fullName = document.createElement('H2');
     laureate.knownName 
@@ -143,6 +146,29 @@ const firstLoad = () => {
     getArticles();
 }
 
+
+
+const applyChanges = (event) => {
+
+    event.preventDefault();
+
+    if(parseInt(nobelPrizeYear.value) >= 1901 && parseInt(nobelPrizeYear.value) <= 2024 && nobelPrizeCategory.value){
+
+        let params = new URLSearchParams(window.location.search);
+        
+        params.set('year', nobelPrizeYear.value);
+        params.set('category', nobelPrizeCategory.value);
+
+        window.location.href = window.location.pathname + '?' + params.toString();
+    }
+
+
+    
+    
+}
+
+
+form.addEventListener('submit', applyChanges)
 
 
 document.addEventListener('DOMContentLoaded', firstLoad)

@@ -87,13 +87,12 @@ const applyChanges = (event) => {
     event.preventDefault();
 
     let nobelPrizesCopy = [...nobelPrizes];
+    let limit = 0;
 
     if (sort.value) {
         if (sort.value == 'desc') nobelPrizesCopy.sort((a, b) => b.awardYear - a.awardYear);
         if (sort.value == 'asc') nobelPrizesCopy.sort((a, b) => a.awardYear - b.awardYear);
     }
-
-    let limit = 0;
 
     if (yearTo.value && parseInt(yearTo.value) >= 1901 && parseInt(yearTo.value) <= 2024) {
         limit = parseInt(yearTo.value);
@@ -113,17 +112,7 @@ const applyChanges = (event) => {
         nobelPrizesCopy = nobelPrizesCopy.filter(nobel => nobel.category.en == nobelPrizeCategory.value)
     }
     
-
-    console.log(nobelPrizesCopy);
     addNobelPrizes(nobelPrizesCopy);
-
-    nobelPrizesCopy.filter(nobel => {
-
-        console.log(nobel);
-    })
-
-
-    
 }
 
 
