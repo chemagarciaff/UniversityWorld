@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- Meta tags for character encoding and responsiveness -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,118 +12,128 @@
     <link href="./../output.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
+    <!-- Main container with grid layout -->
     <div
-    class="contenedor w-auto mx-auto grid grid-rows-[70px_auto_1fr_auto] grid-cols-1 gap-4 p-4 md:grid-cols-[200px_1fr] md:grid-rows-[100px_1fr_auto]">
-    <header class="md:col-span-2 flex justify-center items-center gap-3">
-        <img src="./../assets/images/nobel-price-coin.png" alt="" class="w-[90px] inline-block" id="logo-coin">
-        <img src="./../assets/images/nobel-price-logo.png" alt="" class="w-[90px] inline-block" id="logo-text">
-    </header>
+        class="contenedor w-auto mx-auto grid grid-rows-[70px_auto_1fr_auto] grid-cols-1 gap-4 p-4 md:grid-cols-[200px_1fr] md:grid-rows-[100px_1fr_auto]">
 
-    <aside class="mt-24 relative">
+        <!-- Header section with logos -->
+        <header class="md:col-span-2 flex justify-center items-center gap-3">
+            <img src="./../assets/images/nobel-price-coin.png" alt="" class="w-[90px] inline-block" id="logo-coin">
+            <img src="./../assets/images/nobel-price-logo.png" alt="" class="w-[90px] inline-block" id="logo-text">
+        </header>
 
-        <i class="fa-solid fa-arrow-left absolute text-2xl top-[-50px] text-[#CEA152] hover:scale-125" id="boton"></i>
+        <!-- Aside section with filters -->
+        <aside class="mt-24 relative">
 
-        <div id="dropdown" class="w-full h-[70px] text-center border border-[#CEA152] rounded md:hidden flex items-center justify-center">
-            Filtros
-        </div>
+            <i class="fa-solid fa-arrow-left absolute text-2xl top-[-50px] text-[#CEA152] hover:scale-125"
+                id="boton"></i>
 
-        <form action="" method="get" class="hidden md:block border border-[#CEA152] p-2" id="form">
-           
-
-            <!-- Input for nobelPrizeYear -->
-            <div class="mb-4">
-                <label for="nobelPrizeYear" class="block text-black">Nobel Prize Year</label>
-                <input id="nobelPrizeYear" name="nobelPrizeYear" type="number" min="1901"
-                    class="w-full p-2 border border-[#CEA152] rounded" required>
-                <p class="text-gray-500 text-xs">The year the Nobel Prize was awarded (YYYY format). The year must be after 1901.</p>
+            <div id="dropdown"
+                class="w-full h-[70px] text-center border border-[#CEA152] rounded md:hidden flex items-center justify-center">
+                Filtros
             </div>
-        
-            <!-- Input for nobelPrizeCategory -->
-            <div class="mb-4">
-                <label for="nobelPrizeCategory" class="block text-black">Nobel Prize Category</label>
-                <select id="nobelPrizeCategory" name="nobelPrizeCategory"
-                    class="w-full p-2 border border-[#CEA152] rounded">
-                    <option value="" selected disabled>choose...</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Literature">Literature</option>
-                    <option value="Economic Sciences">Economics</option>
-                    <option value="Peace">Peace</option>
-                    <option value="Physics">Physics</option>
-                    <option value="Physiology or Medicine">Medicine</option>
-                </select>
-                <p class="text-gray-500 text-xs">Nobel Prize category.</p>
+
+            <!-- Form for filtering Nobel Prize data -->
+            <form action="" method="get" class="hidden md:block border border-[#CEA152] p-2" id="form">
+
+
+                <!-- Input for nobelPrizeYear -->
+                <div class="mb-4">
+                    <label for="nobelPrizeYear" class="block text-black">Nobel Prize Year</label>
+                    <input id="nobelPrizeYear" name="nobelPrizeYear" type="number" min="1901"
+                        class="w-full p-2 border border-[#CEA152] rounded" required>
+                    <p class="text-gray-500 text-xs">The year the Nobel Prize was awarded (YYYY format). The year must
+                        be after 1901.</p>
+                </div>
+
+                <!-- Input for nobelPrizeCategory -->
+                <div class="mb-4">
+                    <label for="nobelPrizeCategory" class="block text-black">Nobel Prize Category</label>
+                    <select id="nobelPrizeCategory" name="nobelPrizeCategory"
+                        class="w-full p-2 border border-[#CEA152] rounded">
+                        <option value="" selected disabled>choose...</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Literature">Literature</option>
+                        <option value="Economic Sciences">Economics</option>
+                        <option value="Peace">Peace</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Physiology or Medicine">Medicine</option>
+                    </select>
+                    <p class="text-gray-500 text-xs">Nobel Prize category.</p>
+                </div>
+
+                <button class="bg-[#CEA152] w-full py-2 px-4 rounded-lg text-lg font-medium text-center"
+                    id="changes-btn">Apply Changes</button>
+            </form>
+
+        </aside>
+
+        <!-- Main content section for displaying prizes and related articles -->
+        <main class="w-auto  p-8" id="main">
+            <h2 class="title" id="title"></h2>
+            <div class="cards w-full flex flex-col py-4  gap-3" id="cards">
+                <!-- Aqui iran las tarjetas -->
+
             </div>
-        
-            <button class="bg-[#CEA152] w-full py-2 px-4 rounded-lg text-lg font-medium text-center" id="changes-btn">Apply Changes</button>
-        </form>
-        
-    </aside>
+            <h2 class="title">Related Articles</h2>
+            <div class="news w-full flex flex-wrap justify-center gap-3" id="news">
+                <!-- Aqui iran las news -->
 
-    <main class="w-auto  p-8" id="main">
-        <h2 class="title" id="title"></h2>
-        <div class="cards w-full flex flex-col py-4  gap-3" id="cards">
-            <!-- Aqui iran las tarjetas -->
-            
-        </div>
-        <h2 class="title">Related Articles</h2>
-        <div class="news w-full flex flex-wrap justify-center gap-3" id="news">
-            <!-- Aqui iran las news -->
+            </div>
+        </main>
 
-        </div>
+        <!-- Footer section with three columns of links -->
+        <footer class="bg-[#CEA152] text-white py-8 md:col-span-2">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8  pt-8">
+                    <!-- Column 1 -->
+                    <div class=" flex flex-col items-center border-l border-black md:border-none">
+                        <h3 class="text-xl underline mb-4 text-black">Nobel Prizes</h3>
+                        <ul>
+                            <li><a href="#" class="text-black hover:text-white">History</a></li>
+                            <li><a href="#" class="text-black hover:text-white">2025 Prizes</a></li>
+                            <li><a href="#" class="text-black hover:text-white">Winners</a></li>
+                            <li><a href="#" class="text-black hover:text-white">News</a></li>
+                        </ul>
+                    </div>
 
+                    <!-- Column 2 (with separator) -->
+                    <div class="border-l border-black pl-8 flex flex-col items-center">
+                        <h3 class="text-xl underline mb-4 text-black">Connect with Us</h3>
+                        <ul>
+                            <li><a href="#" class="text-black hover:text-white">Contact</a></li>
+                            <li><a href="#" class="text-black hover:text-white">Social Media</a></li>
+                            <li><a href="#" class="text-black hover:text-white">About Us</a></li>
+                        </ul>
+                    </div>
 
-
-    </main>
-
-    <footer class="bg-[#CEA152] text-white py-8 md:col-span-2">
-        <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8  pt-8">
-                <!-- Column 1 -->
-                <div  class=" flex flex-col items-center border-l border-black md:border-none">
-                    <h3 class="text-xl underline mb-4 text-black">Nobel Prizes</h3>
-                    <ul>
-                        <li><a href="#" class="text-black hover:text-white">History</a></li>
-                        <li><a href="#" class="text-black hover:text-white">2025 Prizes</a></li>
-                        <li><a href="#" class="text-black hover:text-white">Winners</a></li>
-                        <li><a href="#" class="text-black hover:text-white">News</a></li>
-                    </ul>
-                </div>
-    
-                <!-- Column 2 (with separator) -->
-                <div class="border-l border-black pl-8 flex flex-col items-center">
-                    <h3 class="text-xl underline mb-4 text-black">Connect with Us</h3>
-                    <ul>
-                        <li><a href="#" class="text-black hover:text-white">Contact</a></li>
-                        <li><a href="#" class="text-black hover:text-white">Social Media</a></li>
-                        <li><a href="#" class="text-black hover:text-white">About Us</a></li>
-                    </ul>
-                </div>
-    
-                <!-- Column 3 (with separator) -->
-                <div class="border-l border-black pl-8 flex flex-col items-center">
-                    <h3 class="text-xl underline mb-4 text-black">Client Support</h3>
-                    <ul>
-                        <li><a href="#" class="text-black hover:text-white">FAQs</a></li>
-                        <li><a href="#" class="text-black hover:text-white">Help Center</a></li>
-                        <li><a href="#" class="text-black hover:text-white">Terms of Service</a></li>
-                        <li><a href="#" class="text-black hover:text-white">Privacy Policy</a></li>
-                    </ul>
+                    <!-- Column 3 (with separator) -->
+                    <div class="border-l border-black pl-8 flex flex-col items-center">
+                        <h3 class="text-xl underline mb-4 text-black">Client Support</h3>
+                        <ul>
+                            <li><a href="#" class="text-black hover:text-white">FAQs</a></li>
+                            <li><a href="#" class="text-black hover:text-white">Help Center</a></li>
+                            <li><a href="#" class="text-black hover:text-white">Terms of Service</a></li>
+                            <li><a href="#" class="text-black hover:text-white">Privacy Policy</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    
-        <!-- Additional footer content -->
-        <div class="text-center mt-8 text-white">
-            <p>&copy; 2025 Nobel Prizes. All rights reserved.</p>
-        </div>
-    </footer>
+
+            <!-- Additional footer content -->
+            <div class="text-center mt-8 text-white">
+                <p>&copy; 2025 Nobel Prizes. All rights reserved.</p>
+            </div>
+        </footer>
 
 
 
-</div>
+    </div>
 
     <script src="./../js/animations.js"></script>
     <script src="./../js/nobelprice.js" type="module"></script>
 </body>
+
 </html>

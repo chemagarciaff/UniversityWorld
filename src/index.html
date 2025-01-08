@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Meta information and links for stylesheets and favicon -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Nobel Prize</title>
     <link rel="shortcut icon" href="./assets/images/nobel-price-coin.png" type="image/x-icon">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/animations.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css"> <!-- Main CSS -->
+    <link rel="stylesheet" href="./css/animations.css"> <!-- CSS for animations -->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> <!-- Font Awesome for icons -->
+    <link href="./output.css" rel="stylesheet"> <!-- Tailwind CSS -->
 </head>
 
 <body class="overflow-hidden" id="body">
 
+    <!-- First screen animation that displays a logo and rotating coin -->
     <div class="firstAnimation absolute top-0 left-0 w-full h-[100vh] bg-white flex justify-center items-center"
         id="firstScreen">
         <img src="./assets/images/nobel-price-logo.png" alt=""
@@ -22,19 +25,23 @@
             id="animationFirstCoin">
     </div>
 
+    <!-- Main container that holds the header, form for filters, and main content -->
     <div
         class="container w-full mx-auto grid grid-rows-[70px_auto__1fr_auto] grid-cols-[auto] gap-3 p-4 md:grid-cols-[200px_1fr] md:grid-rows-[100px_1fr_auto]">
+        <!-- Header section displaying the Nobel Prize logo -->
         <header class="md:col-span-2 flex justify-center items-center gap-3 row-span-1 col-span-1">
             <img src="./assets/images/nobel-price-coin.png" alt="" class="w-[90px] inline-block" id="logo-coin">
             <img src="./assets/images/nobel-price-logo.png" alt="" class="w-[90px] inline-block" id="logo-text">
         </header>
 
+        <!-- Sidebar with filters, visible only on medium and larger screens -->
         <aside class="mt-24 ml-4 row-span-1 col-span-1">
             <div id="dropdown"
                 class="w-full h-[70px] text-center border border-[#CEA152] rounded md:hidden flex items-center justify-center">
                 Filtros
             </div>
 
+            <!-- Filter form visible on larger screens (desktop/tablet) -->
             <form action="" method="get" class="hidden md:block border border-[#CEA152] p-2" id="form">
                 <!-- Input for sort -->
                 <div class="mb-4">
@@ -46,23 +53,25 @@
                     </select>
                     <p class="text-gray-500 text-xs">Sort order (results will be sorted by year).</p>
                 </div>
-            
+
                 <!-- Input for nobelPrizeYear -->
                 <div class="mb-4">
                     <label for="nobelPrizeYear" class="block text-black">Nobel Prize Year</label>
                     <input id="nobelPrizeYear" name="nobelPrizeYear" type="number" min="1901"
                         class="w-full p-2 border border-[#CEA152] rounded">
-                    <p class="text-gray-500 text-xs">Year the Nobel Prize was awarded (YYYY format). The year must be later than 1901.</p>
+                    <p class="text-gray-500 text-xs">Year the Nobel Prize was awarded (YYYY format). The year must be
+                        later than 1901.</p>
                 </div>
-            
+
                 <!-- Input for yearTo -->
                 <div class="mb-4">
                     <label for="yearTo" class="block text-black">Up to Year</label>
                     <input id="yearTo" name="yearTo" type="number" min="1901"
                         class="w-full p-2 border border-[#CEA152] rounded">
-                    <p class="text-gray-500 text-xs">To specify a range of years. The year must be later than 1901 and greater than the year selected in the input above.</p>
+                    <p class="text-gray-500 text-xs">To specify a range of years. The year must be later than 1901 and
+                        greater than the year selected in the input above.</p>
                 </div>
-            
+
                 <!-- Input for nobelPrizeCategory -->
                 <div class="mb-4">
                     <label for="nobelPrizeCategory" class="block text-black">Nobel Prize Category</label>
@@ -78,28 +87,30 @@
                     </select>
                     <p class="text-gray-500 text-xs">Nobel Prize category.</p>
                 </div>
-            
+
                 <button class="bg-[#CEA152] w-full py-2 px-4 rounded-lg text-lg font-medium text-center"
                     id="changes-btn">Apply Changes</button>
-            
+
             </form>
-            
+
         </aside>
 
+         <!-- Main content displaying Nobel Prize cards -->
         <main class="w-auto  p-8 row-span-1 col-span-1" id="main">
             <h2 class="title pl-8">PRIZES</h2>
             <div class="cards w-full flex flex-wrap justify-center p-4 gap-3" id="cards">
-                <!-- Aqui iran las tarjetas -->
+                <!-- Cards displaying Nobel Prizes will go here -->
 
             </div>
 
         </main>
 
+        <!-- Footer with links to various sections like history, social media, and client support -->
         <footer class="bg-[#CEA152] text-white py-8 mx-12 md:col-span-2 col-span-1 row-span-1">
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8  pt-8">
-                    <div  class=" flex flex-col items-center border-l border-black md:border-none">
-                        <h3 class="text-xl font-semibold mb-4">Nobel Prizes</h3>
+                    <div class=" flex flex-col items-center border-l border-black md:border-none">
+                        <h3 class="text-xl text-black mb-4">Nobel Prizes</h3>
                         <ul>
                             <li><a href="#" class="text-black hover:text-white">History</a></li>
                             <li><a href="#" class="text-black hover:text-white">2025 Prizes</a></li>
@@ -107,18 +118,18 @@
                             <li><a href="#" class="text-black hover:text-white">News</a></li>
                         </ul>
                     </div>
-        
+
                     <div class="border-l border-black pl-8 flex flex-col items-center">
-                        <h3 class="text-xl font-semibold mb-4">Connect with Us</h3>
+                        <h3 class="text-xl text-black mb-4">Connect with Us</h3>
                         <ul>
                             <li><a href="#" class="text-black hover:text-white">Contact</a></li>
                             <li><a href="#" class="text-black hover:text-white">Social Media</a></li>
                             <li><a href="#" class="text-black hover:text-white">About Us</a></li>
                         </ul>
                     </div>
-        
+
                     <div class="border-l border-black pl-8 flex flex-col items-center">
-                        <h3 class="text-xl font-semibold mb-4">Client Support</h3>
+                        <h3 class="text-xl text-black mb-4">Client Support</h3>
                         <ul>
                             <li><a href="#" class="text-black hover:text-white">FAQs</a></li>
                             <li><a href="#" class="text-black hover:text-white">Help Center</a></li>
@@ -128,12 +139,12 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="text-center mt-8 text-white">
                 <p>&copy; 2025 Nobel Prizes. All rights reserved.</p>
             </div>
         </footer>
-        
+
 
     </div>
     <script src="./js/animations.js"></script>

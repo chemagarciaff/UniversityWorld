@@ -7,8 +7,7 @@ let nobelPrizeCategory = document.getElementById('nobelPrizeCategory');
 let nobelPrizes;
 
 
-// Peticiones a api de Premios nobel
-
+// API request to fetch Nobel Prizes data
 const getNobelPrizes = async () => {
     const results = await fetch("https://api.nobelprize.org/2.1/nobelPrizes?limit=676&sort=asc");
 
@@ -17,8 +16,7 @@ const getNobelPrizes = async () => {
     return data.nobelPrizes;
 }
 
-
-
+// Load the Nobel Prizes data and store it in localStorage
 const loadNobelPrizes = async () => {
     nobelPrizes = await getNobelPrizes();
 
@@ -30,6 +28,7 @@ const loadNobelPrizes = async () => {
     addNobelPrizes(nobelPrizes);
 }
 
+// Add Nobel Prizes to the page by creating cards
 const addNobelPrizes = (nobelPrizes) => {
 
     cards.innerHTML = '';
@@ -46,6 +45,7 @@ const addNobelPrizes = (nobelPrizes) => {
 
 }
 
+// Create a card for a given Nobel Prize
 const createCard = (nobel) => {
     let card = document.createElement('DIV');
     card.classList.add('card', 'change', 'w-[280px]', 'py-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-center', 'border', 'border-[#CEA152]');
@@ -64,7 +64,7 @@ const createCard = (nobel) => {
     return card;
 }
 
-
+// Handle click event on Nobel Prize cards
 const changePage = (event) => {
     let element = event.target;
 
@@ -82,6 +82,7 @@ const changePage = (event) => {
     }
 }
 
+// Apply filters and sorting based on user input
 const applyChanges = (event) => {
 
     event.preventDefault();
@@ -89,15 +90,18 @@ const applyChanges = (event) => {
     let nobelPrizesCopy = [...nobelPrizes];
     let limit = 0;
 
+    // Sort the Nobel Prizes based on the selected sort order
     if (sort.value) {
         if (sort.value == 'desc') nobelPrizesCopy.sort((a, b) => b.awardYear - a.awardYear);
         if (sort.value == 'asc') nobelPrizesCopy.sort((a, b) => a.awardYear - b.awardYear);
     }
 
+    // Filter by 'yearTo' if a valid value is provided
     if (yearTo.value && parseInt(yearTo.value) >= 1901 && parseInt(yearTo.value) <= 2024) {
         limit = parseInt(yearTo.value);
     }
     
+    // Filter by 'nobelPrizeYear' if a valid year is selected
     if (nobelPrizeYear.value) {
         if (limit < parseInt(nobelPrizeYear.value)) limit = parseInt(nobelPrizeYear.value);
     
@@ -108,6 +112,7 @@ const applyChanges = (event) => {
         }
     }
 
+    // Filter by 'nobelPrizeCategory' if a category is selected
     if(nobelPrizeCategory.value){
         nobelPrizesCopy = nobelPrizesCopy.filter(nobel => nobel.category.en == nobelPrizeCategory.value)
     }
@@ -115,7 +120,7 @@ const applyChanges = (event) => {
     addNobelPrizes(nobelPrizesCopy);
 }
 
-
+// Add event listeners
 form.addEventListener('submit', applyChanges)
 document.addEventListener('DOMContentLoaded', loadNobelPrizes)
 cards.addEventListener('click', changePage)

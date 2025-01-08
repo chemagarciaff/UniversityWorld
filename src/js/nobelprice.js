@@ -1,24 +1,29 @@
-
+// Variables
 let cards = document.getElementById('cards');
 let news = document.getElementById('news');
 let nobelPrizeCategory = document.getElementById('nobelPrizeCategory');
 let nobelPrizeYear = document.getElementById('nobelPrizeYear');
-
 let boton = document.getElementById('boton');
+let nobelPrizes;
+let chosenPrize;
+let year;
+let category;
+let firstLaureate;
 
+
+// Event listener for the button to navigate to another page
 boton.addEventListener('click', function () {
     window.location.href = "./../index.html";
 })
 
-
-
-
+// Function to format the name for the query (replaces spaces with '%20' and removes periods)
 const formatName = (name) => {
     let newName = name.replace(/\./g, "").replace(/ /g, "%20");
     return name.replace(/\./g, "").replace(/ /g, "%20");
 }
 
 
+// Fetch articles based on Nobel Prize laureate and category
 const getArticles = async () => {
 
     try {
@@ -26,14 +31,14 @@ const getArticles = async () => {
         const results = await fetch("https://api.core.ac.uk/v3/search/works?api_key=ItmjpOsLC8bYwvlTdgR35x7c9yAh12Fk&limit=6&q=nobel%20" + formatName(firstLaureate) + "%20" + category + "%20" + year);
 
         let data = await results.json();
-        console.log(data);
 
+        // If no articles found, display a message
         if (data.results.length == 0) {
             let noArticles = document.createElement('P');
             noArticles.textContent = 'No articles found';
             news.append(noArticles);
         } else {
-
+            // If articles are found, create article elements
             let fragment = document.createDocumentFragment();
 
             data.results.forEach(article => {
@@ -51,25 +56,30 @@ const getArticles = async () => {
         news.append(alert);
 
     }
-
-
 }
 
+// Function to create an article card
 const createArticle = (article) => {
+
+    // Create the container for the article
     let articleContainer = document.createElement('ARTICLE');
     articleContainer.classList.add('card', 'w-full', 'p-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-start', 'border', 'border-[#CEA152]');
 
+    // Create and set the title of the article
     let articleTitle = document.createElement('H2');
     articleTitle.textContent = article.title;
     articleTitle.style.fontSize = '19px';
 
+    // Set the publisher and year; default to "Unknown" if not provided
     let publisherText = (article.publisher == "") ? "Unknown" : article.publisher;
     let yearText = (!article.yearPublished) ? "Unknown" : article.yearPublished;
 
+    // Create and set the publisher and year text
     let publisher = document.createElement('H3');
     publisher.textContent = publisherText + " - " + yearText;
     publisher.style.fontSize = '13px';
 
+    // Create the link to the article
     let link = document.createElement('A');
     link.textContent = 'See Article';
     link.style.paddingTop = '15px';
@@ -84,20 +94,14 @@ const createArticle = (article) => {
     return articleContainer
 }
 
-let nobelPrizes;
-let chosenPrize;
 
+// Function to get Nobel Prize data for a specific year and category
 const getNobelPrize = () => {
     nobelPrizes = JSON.parse(localStorage.getItem('nobelPrizes'));
     chosenPrize = nobelPrizes.filter(nobel => nobel.awardYear == year && nobel.category.en == category)
 }
 
-
-
-let year;
-let category;
-let firstLaureate;
-
+// Function to get URL parameters for year and category
 const getParams = () => {
     let urlParams = new URLSearchParams(window.location.search);
 
@@ -105,6 +109,7 @@ const getParams = () => {
     category = urlParams.get('category');
 }
 
+// Function to set the information in the UI based on the year and category
 const setInfo = () => {
     let title = document.getElementById('title');
     title.textContent = "The Nobel Prize in " + category + " " + year;
@@ -116,6 +121,7 @@ const setInfo = () => {
     nobelPrizeCategory.value = category;
 }
 
+// Function to read laureates and display their information
 const readLaureates = () => {
     let fragment = document.createDocumentFragment();
 
@@ -136,6 +142,7 @@ const readLaureates = () => {
     cards.append(fragment);
 }
 
+// Function to create a card for each laureate
 const createCards = (laureate) => {
     let card = document.createElement('ARTICLE');
     card.classList.add('card', 'w-full', 'p-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-start', 'border', 'border-[#CEA152]');
@@ -156,6 +163,7 @@ const createCards = (laureate) => {
     return card
 }
 
+// Function to initialize the page by loading parameters, Nobel Prize data, and laureates
 const firstLoad = () => {
     getParams();
     getNobelPrize();
@@ -164,8 +172,7 @@ const firstLoad = () => {
     getArticles();
 }
 
-
-
+// Function to handle form submission and apply the changes
 const applyChanges = (event) => {
 
     event.preventDefault();
@@ -180,13 +187,8 @@ const applyChanges = (event) => {
         window.location.href = window.location.pathname + '?' + params.toString();
     }
 
-
-
-
 }
 
 
 form.addEventListener('submit', applyChanges)
-
-
 document.addEventListener('DOMContentLoaded', firstLoad)
