@@ -56,7 +56,7 @@ const firstAnimation = () => {
 
                     sessionStorage.setItem('executedAnimation', 'true');
                     
-                }, 3800);
+                }, 2800);
 
             }, 1260);
 

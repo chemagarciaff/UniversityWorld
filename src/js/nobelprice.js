@@ -4,8 +4,8 @@ let news = document.getElementById('news');
 let nobelPrizeCategory = document.getElementById('nobelPrizeCategory');
 let nobelPrizeYear = document.getElementById('nobelPrizeYear');
 
-
 let boton = document.getElementById('boton');
+
 boton.addEventListener('click', function(){ 
     window.location.href = "./../index.html";
 })
@@ -14,33 +14,41 @@ boton.addEventListener('click', function(){
 
 
 const formatName = (name) => {
-    console.log(name);
     let newName = name.replace(/\./g, "").replace(/ /g, "%20");
-    console.log(newName);
     return name.replace(/\./g, "").replace(/ /g, "%20");
 }
 
 
 const getArticles = async () => {
-    console.log("https://api.core.ac.uk/v3/search/works?api_key=ItmjpOsLC8bYwvlTdgR35x7c9yAh12Fk&limit=10&q=nobel%20" + formatName(firstLaureate) + "%20" + category + "%20" + year);
-    const results = await fetch("https://api.core.ac.uk/v3/search/works?api_key=ItmjpOsLC8bYwvlTdgR35x7c9yAh12Fk&limit=10&q=nobel%20limit=10%20" + formatName(firstLaureate) + "%20" + category + "%20" + year);
+    console.log("https://api.core.ac.uk/v3/search/works?api_key=ItmjpOsLC8bYwvlTdgR35x7c9yAh12Fk&limit=10&q=nobel%20" + formatName(firstLaureate) + "%20" + formatName(category) + "%20" + year);
+    const results = await fetch("https://api.core.ac.uk/v3/search/works?api_key=ItmjpOsLC8bYwvlTdgR35x7c9yAh12Fk&limit=6&q=nobel%20" + formatName(firstLaureate) + "%20" + category + "%20" + year);
 
     let data = await results.json();
+    console.log(data);
 
-    let fragment = document.createDocumentFragment();
+    if(data.results.length == 0){
+        let noArticles = document.createElement('P');
+        noArticles.textContent = 'No articles found';
+        news.append(noArticles);
+    }else{
 
-    data.results.forEach(article => 
-        fragment.append(createArticle(article))
-    )
+        let fragment = document.createDocumentFragment();
+    
+        data.results.forEach(article => {
+    
+            fragment.append(createArticle(article))
+        }
+        )
+    
+        news.append(fragment);
+    }
 
-    news.append(fragment);
 
-    console.log(data.results);
 }
 
 const createArticle = (article) => {
     let articleContainer = document.createElement('ARTICLE');
-    articleContainer.classList.add('w-full', 'p-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-start', 'border', 'border-[#CEA152]');
+    articleContainer.classList.add('card', 'w-full', 'p-7', 'mb-3', 'flex', 'flex-col', 'justify-center', 'items-start', 'border', 'border-[#CEA152]');
     
     let articleTitle = document.createElement('H2');
     articleTitle.textContent = article.title;
@@ -56,8 +64,9 @@ const createArticle = (article) => {
     let link = document.createElement('A');
     link.textContent = 'See Article';
     link.style.paddingTop = '15px';
+    link.style.textDecoration = 'underline';
+    link.classList.add('hover:text-white')
     link.target = 'False';
-    link.style.color = '#d39f44'
     link.href = article.downloadUrl;
 
 
@@ -172,4 +181,3 @@ form.addEventListener('submit', applyChanges)
 
 
 document.addEventListener('DOMContentLoaded', firstLoad)
-cards.addEventListener('click', (event) => {console.log(event.target)})

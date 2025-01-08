@@ -5,21 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Nobel Prize</title>
+    <link rel="shortcut icon" href="./assets/images/nobel-price-coin.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/animations.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link href="./output.css" rel="stylesheet">
-    <link rel="shortcut icon" href="./assets/images/nobel-price-coin.png" type="image/x-icon">
 </head>
 
 <body class="overflow-hidden" id="body">
 
-    <div class="firstAnimation absolute top-0 left-0 w-full h-[100vh] bg-white flex justify-center items-center" id="firstScreen">
-        <img src="./assets/images/nobel-price-logo.png" alt="" class="w-[400px] logo-text absolute top-[48%] left-[50%] hidden" id="animationFirstText">
-        <img src="./assets/images/nobel-price-coin.png" alt="" class="w-[450px] logo-coin rotateInitialCoin relative" id="animationFirstCoin">
+    <div class="firstAnimation absolute top-0 left-0 w-full h-[100vh] bg-white flex justify-center items-center"
+        id="firstScreen">
+        <img src="./assets/images/nobel-price-logo.png" alt=""
+            class="w-[400px] logo-text absolute top-[48%] left-[50%] hidden" id="animationFirstText">
+        <img src="./assets/images/nobel-price-coin.png" alt="" class="w-[450px] logo-coin rotateInitialCoin relative"
+            id="animationFirstCoin">
     </div>
 
     <div
-        class="container w-full mx-auto grid grid-rows-[70px_auto_1fr_100px] grid-cols-1 gap-3 p-4 md:grid-cols-[200px_1fr] md:grid-rows-[100px_1fr_100px]">
+        class="container w-full mx-auto grid grid-rows-[70px_auto_1fr_auto] grid-cols-1 gap-3 p-4 md:grid-cols-[200px_1fr] md:grid-rows-[100px_1fr_auto]">
         <header class="md:col-span-2 flex justify-center items-center gap-3">
             <img src="./assets/images/nobel-price-coin.png" alt="" class="w-[90px] inline-block" id="logo-coin">
             <img src="./assets/images/nobel-price-logo.png" alt="" class="w-[90px] inline-block" id="logo-text">
@@ -27,7 +31,8 @@
 
         <aside class="mt-24 ml-4">
 
-            <div id="dropdown" class="w-full h-[70px] text-center border border-[#CEA152] rounded md:hidden flex items-center justify-center">
+            <div id="dropdown"
+                class="w-full h-[70px] text-center border border-[#CEA152] rounded md:hidden flex items-center justify-center">
                 Filtros
             </div>
 
@@ -47,7 +52,7 @@
                 <div class="mb-4">
                     <label for="nobelPrizeYear" class="block text-black">Año del Premio Nobel</label>
                     <input id="nobelPrizeYear" name="nobelPrizeYear" type="number" min="1901"
-                        class="w-full p-2 border border-gray-300 rounded" >
+                        class="w-full p-2 border border-gray-300 rounded">
                     <p class="text-gray-500 text-xs">Año en que se otorgó el Premio Nobel (formato YYYY). El año debe
                         ser posterior a 1901.</p>
                 </div>
@@ -56,7 +61,7 @@
                 <div class="mb-4">
                     <label for="yearTo" class="block text-black">Hasta el año</label>
                     <input id="yearTo" name="yearTo" type="number" min="1901"
-                        class="w-full p-2 border border-gray-300 rounded" >
+                        class="w-full p-2 border border-gray-300 rounded">
                     <p class="text-gray-500 text-xs">Se utiliza junto con el año del Premio Nobel para especificar un
                         rango de años. El año debe ser posterior a 1901.</p>
                 </div>
@@ -66,7 +71,7 @@
                     <label for="nobelPrizeCategory" class="block text-black">Categoría del Premio Nobel</label>
                     <select id="nobelPrizeCategory" name="nobelPrizeCategory"
                         class="w-full p-2 border border-gray-300 rounded">
-                        <option value="" selected >All</option>
+                        <option value="" selected>All</option>
                         <option value="Chemistry">Química</option>
                         <option value="Economic Sciences">Economía</option>
                         <option value="Literature">Literatura</option>
@@ -77,8 +82,8 @@
                     <p class="text-gray-500 text-xs">Categoría del Premio Nobel.</p>
                 </div>
 
-                <button class="bg-green-500 text-white py-2 px-4 rounded-lg text-lg font-medium text-center hover:bg-green-600 active:scale-95 transition-all" id="changes-btn">Apply Changes</button>
-
+                <button class="bg-[#CEA152] w-full py-2 px-4 rounded-lg text-lg font-medium text-center"
+                    id="changes-btn">Apply Changes</button>
 
             </form>
         </aside>
@@ -92,9 +97,49 @@
 
         </main>
 
-        <footer class="border border-[yellow] md:col-span-2">
-
+        <footer class="bg-[#CEA152] text-white py-8 mx-12 col-span-2">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8  pt-8">
+                    <!-- Column 1 -->
+                    <div  class=" flex flex-col items-center border-l border-black md:border-none">
+                        <h3 class="text-xl font-semibold mb-4">Nobel Prizes</h3>
+                        <ul>
+                            <li><a href="#" class="text-white hover:text-black">History</a></li>
+                            <li><a href="#" class="text-white hover:text-black">2025 Prizes</a></li>
+                            <li><a href="#" class="text-white hover:text-black">Winners</a></li>
+                            <li><a href="#" class="text-white hover:text-black">News</a></li>
+                        </ul>
+                    </div>
+        
+                    <!-- Column 2 (with separator) -->
+                    <div class="border-l border-black pl-8 flex flex-col items-center">
+                        <h3 class="text-xl font-semibold mb-4">Connect with Us</h3>
+                        <ul>
+                            <li><a href="#" class="text-white hover:text-black">Contact</a></li>
+                            <li><a href="#" class="text-white hover:text-black">Social Media</a></li>
+                            <li><a href="#" class="text-white hover:text-black">About Us</a></li>
+                        </ul>
+                    </div>
+        
+                    <!-- Column 3 (with separator) -->
+                    <div class="border-l border-black pl-8 flex flex-col items-center">
+                        <h3 class="text-xl font-semibold mb-4">Client Support</h3>
+                        <ul>
+                            <li><a href="#" class="text-white hover:text-black">FAQs</a></li>
+                            <li><a href="#" class="text-white hover:text-black">Help Center</a></li>
+                            <li><a href="#" class="text-white hover:text-black">Terms of Service</a></li>
+                            <li><a href="#" class="text-white hover:text-black">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Additional footer content -->
+            <div class="text-center mt-8 text-white">
+                <p>&copy; 2025 Nobel Prizes. All rights reserved.</p>
+            </div>
         </footer>
+        
 
     </div>
     <script src="./js/animations.js"></script>
