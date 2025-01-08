@@ -20,9 +20,11 @@ const showForm = () => {
     if(!formShown){
         form.classList.remove('hidden');
         form.classList.add('block');
+        dropdown.classList.add('bg-[#CEA152]');
     }else{
         form.classList.remove('block');
         form.classList.add('hidden');
+        dropdown.classList.remove('bg-[#CEA152]');
     }
 
     formShown = !formShown;

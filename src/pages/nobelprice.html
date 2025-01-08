@@ -28,20 +28,19 @@
         <form action="" method="get" class="hidden md:block border border-[#CEA152] p-2" id="form">
            
 
-            <!-- Input para nobelPrizeYear -->
+            <!-- Input for nobelPrizeYear -->
             <div class="mb-4">
-                <label for="nobelPrizeYear" class="block text-black">Año del Premio Nobel</label>
+                <label for="nobelPrizeYear" class="block text-black">Nobel Prize Year</label>
                 <input id="nobelPrizeYear" name="nobelPrizeYear" type="number" min="1901"
-                    class="w-full p-2 border border-gray-300 rounded" required>
-                <p class="text-gray-500 text-xs">Año en que se otorgó el Premio Nobel (formato YYYY). El año debe
-                    ser posterior a 1901.</p>
+                    class="w-full p-2 border border-[#CEA152] rounded" required>
+                <p class="text-gray-500 text-xs">The year the Nobel Prize was awarded (YYYY format). The year must be after 1901.</p>
             </div>
-
-            <!-- Input para nobelPrizeCategory -->
+        
+            <!-- Input for nobelPrizeCategory -->
             <div class="mb-4">
-                <label for="nobelPrizeCategory" class="block text-black">Categoría del Premio Nobel</label>
+                <label for="nobelPrizeCategory" class="block text-black">Nobel Prize Category</label>
                 <select id="nobelPrizeCategory" name="nobelPrizeCategory"
-                    class="w-full p-2 border border-gray-300 rounded">
+                    class="w-full p-2 border border-[#CEA152] rounded">
                     <option value="" selected disabled>choose...</option>
                     <option value="Chemistry">Chemistry</option>
                     <option value="Literature">Literature</option>
@@ -50,11 +49,12 @@
                     <option value="Physics">Physics</option>
                     <option value="Physiology or Medicine">Medicine</option>
                 </select>
-                <p class="text-gray-500 text-xs">Categoría del Premio Nobel.</p>
+                <p class="text-gray-500 text-xs">Nobel Prize category.</p>
             </div>
-
+        
             <button class="bg-[#CEA152] w-full py-2 px-4 rounded-lg text-lg font-medium text-center" id="changes-btn">Apply Changes</button>
         </form>
+        
     </aside>
 
     <main class="w-auto  p-8" id="main">
@@ -73,38 +73,38 @@
 
     </main>
 
-    <footer class="bg-[#CEA152] text-white py-8 col-span-2">
+    <footer class="bg-[#CEA152] text-white py-8 md:col-span-2">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8  pt-8">
                 <!-- Column 1 -->
                 <div  class=" flex flex-col items-center border-l border-black md:border-none">
-                    <h3 class="text-xl font-semibold mb-4">Nobel Prizes</h3>
+                    <h3 class="text-xl underline mb-4 text-black">Nobel Prizes</h3>
                     <ul>
-                        <li><a href="#" class="text-white hover:text-black">History</a></li>
-                        <li><a href="#" class="text-white hover:text-black">2025 Prizes</a></li>
-                        <li><a href="#" class="text-white hover:text-black">Winners</a></li>
-                        <li><a href="#" class="text-white hover:text-black">News</a></li>
+                        <li><a href="#" class="text-black hover:text-white">History</a></li>
+                        <li><a href="#" class="text-black hover:text-white">2025 Prizes</a></li>
+                        <li><a href="#" class="text-black hover:text-white">Winners</a></li>
+                        <li><a href="#" class="text-black hover:text-white">News</a></li>
                     </ul>
                 </div>
     
                 <!-- Column 2 (with separator) -->
                 <div class="border-l border-black pl-8 flex flex-col items-center">
-                    <h3 class="text-xl font-semibold mb-4">Connect with Us</h3>
+                    <h3 class="text-xl underline mb-4 text-black">Connect with Us</h3>
                     <ul>
-                        <li><a href="#" class="text-white hover:text-black">Contact</a></li>
-                        <li><a href="#" class="text-white hover:text-black">Social Media</a></li>
-                        <li><a href="#" class="text-white hover:text-black">About Us</a></li>
+                        <li><a href="#" class="text-black hover:text-white">Contact</a></li>
+                        <li><a href="#" class="text-black hover:text-white">Social Media</a></li>
+                        <li><a href="#" class="text-black hover:text-white">About Us</a></li>
                     </ul>
                 </div>
     
                 <!-- Column 3 (with separator) -->
                 <div class="border-l border-black pl-8 flex flex-col items-center">
-                    <h3 class="text-xl font-semibold mb-4">Client Support</h3>
+                    <h3 class="text-xl underline mb-4 text-black">Client Support</h3>
                     <ul>
-                        <li><a href="#" class="text-white hover:text-black">FAQs</a></li>
-                        <li><a href="#" class="text-white hover:text-black">Help Center</a></li>
-                        <li><a href="#" class="text-white hover:text-black">Terms of Service</a></li>
-                        <li><a href="#" class="text-white hover:text-black">Privacy Policy</a></li>
+                        <li><a href="#" class="text-black hover:text-white">FAQs</a></li>
+                        <li><a href="#" class="text-black hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-black hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-black hover:text-white">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>

@@ -23,72 +23,70 @@
     </div>
 
     <div
-        class="container w-full mx-auto grid grid-rows-[70px_auto_1fr_auto] grid-cols-1 gap-3 p-4 md:grid-cols-[200px_1fr] md:grid-rows-[100px_1fr_auto]">
-        <header class="md:col-span-2 flex justify-center items-center gap-3">
+        class="container w-full mx-auto grid grid-rows-[70px_auto__1fr_auto] grid-cols-[auto] gap-3 p-4 md:grid-cols-[200px_1fr] md:grid-rows-[100px_1fr_auto]">
+        <header class="md:col-span-2 flex justify-center items-center gap-3 row-span-1 col-span-1">
             <img src="./assets/images/nobel-price-coin.png" alt="" class="w-[90px] inline-block" id="logo-coin">
             <img src="./assets/images/nobel-price-logo.png" alt="" class="w-[90px] inline-block" id="logo-text">
         </header>
 
-        <aside class="mt-24 ml-4">
-
+        <aside class="mt-24 ml-4 row-span-1 col-span-1">
             <div id="dropdown"
                 class="w-full h-[70px] text-center border border-[#CEA152] rounded md:hidden flex items-center justify-center">
                 Filtros
             </div>
 
             <form action="" method="get" class="hidden md:block border border-[#CEA152] p-2" id="form">
-                <!-- Input para sort -->
+                <!-- Input for sort -->
                 <div class="mb-4">
-                    <label for="sort" class="block text-black">Orden de clasificación</label>
-                    <select id="sort" name="sort" class="w-full p-2 border border-gray-300 rounded">
-                        <option value="" selected disabled>Seleccionar...</option>
-                        <option value="asc">Ascendente (por año)</option>
-                        <option value="desc">Descendente (por año)</option>
+                    <label for="sort" class="block text-black">Sort Order</label>
+                    <select id="sort" name="sort" class="w-full p-2 border border-[#CEA152] rounded">
+                        <option value="" selected disabled>Select...</option>
+                        <option value="asc">Ascending (by year)</option>
+                        <option value="desc">Descending (by year)</option>
                     </select>
-                    <p class="text-gray-500 text-xs">El orden de clasificación (los resultados se ordenan por año).</p>
+                    <p class="text-gray-500 text-xs">Sort order (results will be sorted by year).</p>
                 </div>
-
-                <!-- Input para nobelPrizeYear -->
+            
+                <!-- Input for nobelPrizeYear -->
                 <div class="mb-4">
-                    <label for="nobelPrizeYear" class="block text-black">Año del Premio Nobel</label>
+                    <label for="nobelPrizeYear" class="block text-black">Nobel Prize Year</label>
                     <input id="nobelPrizeYear" name="nobelPrizeYear" type="number" min="1901"
-                        class="w-full p-2 border border-gray-300 rounded">
-                    <p class="text-gray-500 text-xs">Año en que se otorgó el Premio Nobel (formato YYYY). El año debe
-                        ser posterior a 1901.</p>
+                        class="w-full p-2 border border-[#CEA152] rounded">
+                    <p class="text-gray-500 text-xs">Year the Nobel Prize was awarded (YYYY format). The year must be later than 1901.</p>
                 </div>
-
-                <!-- Input para yearTo -->
+            
+                <!-- Input for yearTo -->
                 <div class="mb-4">
-                    <label for="yearTo" class="block text-black">Hasta el año</label>
+                    <label for="yearTo" class="block text-black">Up to Year</label>
                     <input id="yearTo" name="yearTo" type="number" min="1901"
-                        class="w-full p-2 border border-gray-300 rounded">
-                    <p class="text-gray-500 text-xs">Se utiliza junto con el año del Premio Nobel para especificar un
-                        rango de años. El año debe ser posterior a 1901.</p>
+                        class="w-full p-2 border border-[#CEA152] rounded">
+                    <p class="text-gray-500 text-xs">To specify a range of years. The year must be later than 1901 and greater than the year selected in the input above.</p>
                 </div>
-
-                <!-- Input para nobelPrizeCategory -->
+            
+                <!-- Input for nobelPrizeCategory -->
                 <div class="mb-4">
-                    <label for="nobelPrizeCategory" class="block text-black">Categoría del Premio Nobel</label>
+                    <label for="nobelPrizeCategory" class="block text-black">Nobel Prize Category</label>
                     <select id="nobelPrizeCategory" name="nobelPrizeCategory"
-                        class="w-full p-2 border border-gray-300 rounded">
+                        class="w-full p-2 border border-[#CEA152] rounded">
                         <option value="" selected>All</option>
-                        <option value="Chemistry">Química</option>
-                        <option value="Economic Sciences">Economía</option>
-                        <option value="Literature">Literatura</option>
-                        <option value="Peace">Paz</option>
-                        <option value="Physics">Física</option>
-                        <option value="Physiology or Medicine">Medicina</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Economic Sciences">Economics</option>
+                        <option value="Literature">Literature</option>
+                        <option value="Peace">Peace</option>
+                        <option value="Physics">Physics</option>
+                        <option value="Physiology or Medicine">Medicine</option>
                     </select>
-                    <p class="text-gray-500 text-xs">Categoría del Premio Nobel.</p>
+                    <p class="text-gray-500 text-xs">Nobel Prize category.</p>
                 </div>
-
+            
                 <button class="bg-[#CEA152] w-full py-2 px-4 rounded-lg text-lg font-medium text-center"
                     id="changes-btn">Apply Changes</button>
-
+            
             </form>
+            
         </aside>
 
-        <main class="w-auto  p-8" id="main">
+        <main class="w-auto  p-8 row-span-1 col-span-1" id="main">
             <h2 class="title pl-8">PRIZES</h2>
             <div class="cards w-full flex flex-wrap justify-center p-4 gap-3" id="cards">
                 <!-- Aqui iran las tarjetas -->
@@ -97,44 +95,40 @@
 
         </main>
 
-        <footer class="bg-[#CEA152] text-white py-8 mx-12 col-span-2">
+        <footer class="bg-[#CEA152] text-white py-8 mx-12 md:col-span-2 col-span-1 row-span-1">
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8  pt-8">
-                    <!-- Column 1 -->
                     <div  class=" flex flex-col items-center border-l border-black md:border-none">
                         <h3 class="text-xl font-semibold mb-4">Nobel Prizes</h3>
                         <ul>
-                            <li><a href="#" class="text-white hover:text-black">History</a></li>
-                            <li><a href="#" class="text-white hover:text-black">2025 Prizes</a></li>
-                            <li><a href="#" class="text-white hover:text-black">Winners</a></li>
-                            <li><a href="#" class="text-white hover:text-black">News</a></li>
+                            <li><a href="#" class="text-black hover:text-white">History</a></li>
+                            <li><a href="#" class="text-black hover:text-white">2025 Prizes</a></li>
+                            <li><a href="#" class="text-black hover:text-white">Winners</a></li>
+                            <li><a href="#" class="text-black hover:text-white">News</a></li>
                         </ul>
                     </div>
         
-                    <!-- Column 2 (with separator) -->
                     <div class="border-l border-black pl-8 flex flex-col items-center">
                         <h3 class="text-xl font-semibold mb-4">Connect with Us</h3>
                         <ul>
-                            <li><a href="#" class="text-white hover:text-black">Contact</a></li>
-                            <li><a href="#" class="text-white hover:text-black">Social Media</a></li>
-                            <li><a href="#" class="text-white hover:text-black">About Us</a></li>
+                            <li><a href="#" class="text-black hover:text-white">Contact</a></li>
+                            <li><a href="#" class="text-black hover:text-white">Social Media</a></li>
+                            <li><a href="#" class="text-black hover:text-white">About Us</a></li>
                         </ul>
                     </div>
         
-                    <!-- Column 3 (with separator) -->
                     <div class="border-l border-black pl-8 flex flex-col items-center">
                         <h3 class="text-xl font-semibold mb-4">Client Support</h3>
                         <ul>
-                            <li><a href="#" class="text-white hover:text-black">FAQs</a></li>
-                            <li><a href="#" class="text-white hover:text-black">Help Center</a></li>
-                            <li><a href="#" class="text-white hover:text-black">Terms of Service</a></li>
-                            <li><a href="#" class="text-white hover:text-black">Privacy Policy</a></li>
+                            <li><a href="#" class="text-black hover:text-white">FAQs</a></li>
+                            <li><a href="#" class="text-black hover:text-white">Help Center</a></li>
+                            <li><a href="#" class="text-black hover:text-white">Terms of Service</a></li>
+                            <li><a href="#" class="text-black hover:text-white">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         
-            <!-- Additional footer content -->
             <div class="text-center mt-8 text-white">
                 <p>&copy; 2025 Nobel Prizes. All rights reserved.</p>
             </div>
